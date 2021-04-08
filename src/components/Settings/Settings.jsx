@@ -1,14 +1,14 @@
 import React from "react";
-import s from './Music.module.css'
+import s from './Settings.module.css'
 
-const Music = () => {
+const Settings = () => {
     return (
         <div>
             <div>
-                avatar + description
+                Settings
             </div>
         </div>
     )
 }
 
-export default Music
+export default Settings

@@ -1,16 +1,14 @@
 import React from "react";
-import s from './Profile.module.css'
-import MyPosts from "./MyPosts/MyPosts";
+import s from './Music.module.css'
 
-const Profile = () => {
+const Music = () => {
     return (
         <div>
             <div>
-                avatar + description
+                Music
             </div>
-           <MyPosts></MyPosts>
         </div>
     )
 }
 
-export default Profile
+export default Music

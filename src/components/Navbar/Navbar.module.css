@@ -2,3 +2,11 @@
     grid-area: n;
     background-color: mediumpurple;
 }
+
+.item a {
+    color: white;
+}
+
+.item a.active {
+    color: gold;
+}
