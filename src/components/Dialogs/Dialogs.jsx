@@ -1,20 +1,20 @@
 import React from 'react'
 import s from './Dialogs.module.css'
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+import DialogItem from "./DialogItem/DialogItem"
+import Message from "./Message/Message"
 
 const Dialogs = (props) => {
     let dialogElements = props.state.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />)
     let messageElements = props.state.messages.map(message => <Message message={message.message} />)
-    let newMessageElement = React.createRef();
+    let newMessageElement = React.createRef()
 
     const sendMessage = () => {
-        props.sendMessage()
+        props.dispatch({ type: 'SEND-MESSAGE' })
     }
 
     let onMessageChange = () => {
         let message = newMessageElement.current.value
-        props.updateNewMessageText(message)
+        props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: message })
     }
 
     return (

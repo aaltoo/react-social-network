@@ -26,12 +26,18 @@ let store = {
         },
         sidebar: {}
     },
-    getState() {
-        return this._state
-    },
     _callSubscriber() {
         console.log('state changed')
     },
+
+    getState() {
+        return this._state
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer
+    },
+
+    //state changing methods
     addPost(postMessage) {
         let newPost = {
             id: 3,
@@ -49,10 +55,8 @@ let store = {
         }
         this._state.dialogsPage.messages.push(newMessage)
         this._state.dialogsPage.newMessageText = ''
+        console.log(this._state.dialogsPage.newMessageText)
         this._callSubscriber(this._state)
-    },
-    subscribe(observer) {
-        this._callSubscriber = observer
     },
     updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText
@@ -61,6 +65,41 @@ let store = {
     updateNewMessageText(newMessage) {
         this._state.dialogsPage.newMessageText = newMessage
         this._callSubscriber(this._state)
+    },
+
+    dispatch(action) {
+        switch(action.type) {
+            case 'ADD-POST':
+                let newPost = {
+                    id: 3,
+                    message: this._state.profilePage.newPostText,
+                    likeCount: 13
+                }
+                this._state.profilePage.posts.push(newPost)
+                this._state.profilePage.newPostText = ''
+                this._callSubscriber(this._state)
+                break
+            case 'UPDATE-NEW-POST-TEXT':
+                this._state.profilePage.newPostText = action.newText
+                this._callSubscriber(this._state)
+                break
+            case 'SEND-MESSAGE':
+                let newMessage = {
+                    id: 4,
+                    message: this._state.dialogsPage.newMessageText
+                }
+                this._state.dialogsPage.messages.push(newMessage)
+                this._state.dialogsPage.newMessageText = ''
+                console.log(this._state.dialogsPage.newMessageText)
+                this._callSubscriber(this._state)
+                break
+            case 'UPDATE-NEW-MESSAGE-TEXT':
+                this._state.dialogsPage.newMessageText = action.newMessage
+                this._callSubscriber(this._state)
+                break
+            default:
+                console.log('wrong action type')
+        }
     }
 }
 
