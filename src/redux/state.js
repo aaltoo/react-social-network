@@ -1,7 +1,7 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SEND_MESSAGE = 'SEND-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 
 let store = {
     _state: {
@@ -11,7 +11,7 @@ let store = {
                 { id: 1, message: 'whassup?', likeCount: 11},
                 { id: 2, message: 'I am so cooool', likeCount: 0}
             ],
-            newPostText: 'Im pavlov stas'
+            newPostText: ''
         },
         dialogsPage: {
             messages: [
@@ -27,7 +27,7 @@ let store = {
                 { id: 4, name: 'Ivan' },
                 { id: 5, name: 'Victor' },
             ],
-            newMessageText: 'hou are you?'
+            newMessageBody: ''
         },
         sidebar: {}
     },
@@ -42,39 +42,9 @@ let store = {
         this._callSubscriber = observer
     },
 
-    //state changing methods
-    addPost(postMessage) {
-        let newPost = {
-            id: 3,
-            message: this._state.profilePage.newPostText,
-            likeCount: 13
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
-    },
-    sendMessage(sendMessage) {
-        let newMessage = {
-            id: 4,
-            message: this._state.dialogsPage.newMessageText
-        }
-        this._state.dialogsPage.messages.push(newMessage)
-        this._state.dialogsPage.newMessageText = ''
-        console.log(this._state.dialogsPage.newMessageText)
-        this._callSubscriber(this._state)
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText
-        this._callSubscriber(this._state)
-    },
-    updateNewMessageText(newMessage) {
-        this._state.dialogsPage.newMessageText = newMessage
-        this._callSubscriber(this._state)
-    },
-
     dispatch(action) {
         switch(action.type) {
-            case 'ADD-POST':
+            case ADD_POST:
                 let newPost = {
                     id: 3,
                     message: this._state.profilePage.newPostText,
@@ -84,22 +54,21 @@ let store = {
                 this._state.profilePage.newPostText = ''
                 this._callSubscriber(this._state)
                 break
-            case 'UPDATE-NEW-POST-TEXT':
+            case UPDATE_NEW_POST_TEXT:
                 this._state.profilePage.newPostText = action.newText
                 this._callSubscriber(this._state)
                 break
-            case 'SEND-MESSAGE':
+            case SEND_MESSAGE:
                 let newMessage = {
                     id: 4,
-                    message: this._state.dialogsPage.newMessageText
+                    message: this._state.dialogsPage.newMessageBody
                 }
                 this._state.dialogsPage.messages.push(newMessage)
-                this._state.dialogsPage.newMessageText = ''
-                console.log(this._state.dialogsPage.newMessageText)
+                this._state.dialogsPage.newMessageBody = ''
                 this._callSubscriber(this._state)
                 break
-            case 'UPDATE-NEW-MESSAGE-TEXT':
-                this._state.dialogsPage.newMessageText = action.newMessage
+            case UPDATE_NEW_MESSAGE_BODY:
+                this._state.dialogsPage.newMessageBody = action.newMessage
                 this._callSubscriber(this._state)
                 break
             default:
@@ -111,7 +80,7 @@ let store = {
 export let addPostActionCreator = () => ({ type: ADD_POST })
 export let updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 export let sendMessageActionCreator = () => ({ type: SEND_MESSAGE })
-export let updateNewMessageTextActionCreator = (message) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newMessage: message })
+export let updateNewMessageBodyActionCreator = (message) => ({ type: UPDATE_NEW_MESSAGE_BODY, newMessage: message })
 
 window.store = store
 export default store

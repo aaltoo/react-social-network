@@ -2,20 +2,23 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem"
 import Message from "./Message/Message"
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/state";
+import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../redux/state";
 
 const Dialogs = (props) => {
-    let dialogElements = props.state.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />)
-    let messageElements = props.state.messages.map(message => <Message message={message.message} />)
-    let newMessageElement = React.createRef()
+
+    let state = props.store.getState().dialogsPage
+
+    let dialogElements = state.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />)
+    let messageElements = state.messages.map(message => <Message message={message.message} />)
+    let newMessageBody = state.newMessageBody
 
     const sendMessage = () => {
-        props.dispatch(sendMessageActionCreator())
+        props.store.dispatch(sendMessageActionCreator())
     }
 
-    let onMessageChange = () => {
-        let message = newMessageElement.current.value
-        props.dispatch(updateNewMessageTextActionCreator(message))
+    let onMessageChange = (e) => {
+        let body = e.target.value
+        props.store.dispatch(updateNewMessageBodyActionCreator(body))
     }
 
     return (
@@ -25,14 +28,14 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 { messageElements }
-                <textarea ref={newMessageElement}
-                          onChange={onMessageChange}
-                          value={props.newMessageText}
+                <textarea onChange={ onMessageChange }
+                          value={ newMessageBody }
+                          placeholder='Enter your message'
                 />
-                <button onClick={ sendMessage }>send</button>
+
+                <button disabled={ !newMessageBody.length } onClick={ sendMessage }>send</button>
             </div>
         </div>
-
     )
 }
 
