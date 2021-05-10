@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const SEND_MESSAGE = 'SEND-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+
 let store = {
     _state: {
         profilePage: {
@@ -102,6 +107,11 @@ let store = {
         }
     }
 }
+
+export let addPostActionCreator = () => ({ type: ADD_POST })
+export let updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+export let sendMessageActionCreator = () => ({ type: SEND_MESSAGE })
+export let updateNewMessageTextActionCreator = (message) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newMessage: message })
 
 window.store = store
 export default store
