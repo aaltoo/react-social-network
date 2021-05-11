@@ -4,7 +4,7 @@ import s from './Post.module.css'
 const Post = (props) => {
     return (
         <div>
-            <img className={s.avatar} src="https://sun9-14.userapi.com/impg/nqsS_lU8Fip5cFm0cPqk6MhwNtVcdiQu7Vsfug/VmWZFKZtaW4.jpg?size=801x1080&quality=96&sign=d5cd3d411759b2989ad80f1e560b4b6c&type=album" alt=""/>
+            <img className={s.avatar} src="https://sun9-60.userapi.com/impf/c639623/v639623781/23016/IA4ZbJqN93E.jpg?size=258x258&quality=96&sign=4d9e379a0a3d53478cf3d918080f7050&type=album" alt=""/>
             <div>
                 {props.message}
                 {props.likeCount}

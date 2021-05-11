@@ -5,7 +5,7 @@ const ProfileInfo = () => {
     return (
         <div>
             <div>
-                <img src="https://sun9-60.userapi.com/impf/c639623/v639623781/23016/IA4ZbJqN93E.jpg?size=258x258&quality=96&sign=4d9e379a0a3d53478cf3d918080f7050&type=album" alt=""/>
+                <img src="https://sun9-15.userapi.com/impf/g57Go3Nn-gaLCjz4lcoDDeHPBHZVdXVghvhejA/UDR7YVMmC30.jpg?size=1600x1600&quality=96&sign=ce76a93247c21222b3d2644602a3564d&type=album" alt=""/>
             </div>
             <div className={s.descriptionBlock}>
                 avatar + description
