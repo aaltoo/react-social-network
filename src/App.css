@@ -1,14 +1,22 @@
 .app-wrapper {
   display: grid;
   grid-template-areas:
-  "h h"
-  "n c";
+  "h h h h"
+  ". n c .";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  //grid-gap: 10px;
+  grid-template-columns: 3fr 1fr 5fr 3fr;
+  grid-gap: 10px;
+  min-height: 100vh;
+  background-color: #393E46;
 }
 
 .app-wrapper-content {
-  //grid-area: c;
-  background-color: darkseagreen;
+  grid-area: c;
+  background-color: #333336;
+  border-radius: 10px;
+}
+
+p, div, a {
+  color: #FFF;
+  text-decoration: none;
 }
