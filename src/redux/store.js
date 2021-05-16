@@ -1,54 +1,8 @@
-import profileReducer from "./profile-reducer";
-import dialogsReducer from "./dialogs-reducer";
-import sidebarReducer from "./sidebar-reducer";
-
-let store = {
-    _state: {
-        profilePage: {
-            posts: [
-                { id: 0, message: 'Hi how are ya?', likeCount: 12},
-                { id: 1, message: 'whassup?', likeCount: 11},
-                { id: 2, message: 'I am so cooool', likeCount: 0}
-            ],
-            newPostText: ''
-        },
-        dialogsPage: {
-            messages: [
-                { id: 0, message: 'Hi how are ya?'},
-                { id: 1, message: 'whassup?'},
-                { id: 2, message: 'Yooo'},
-                { id: 3, message: 'What\'s been up?'},
-            ],
-            dialogs: [
-                { id: 1, name: 'Dimych' },
-                { id: 2, name: 'Andrew' },
-                { id: 3, name: 'Sveta' },
-                { id: 4, name: 'Ivan' },
-                { id: 5, name: 'Victor' },
-            ],
-            newMessageBody: ''
-        },
-        sidebar: {}
-    },
-    _callSubscriber() {
-        console.log('state changed')
-    },
-
-    getState() {
-        return this._state
-    },
-    subscribe(observer) {
-        this._callSubscriber = observer
-    },
-
-    dispatch(action) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
-
-        this._callSubscriber(this._state)
-    }
-}
-
-window.store = store
-export default store
+let usersHardcode = [
+    { id: 0, photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Guy_Pearce_Cannes_2012.jpg',
+        followed: true, fullName: 'Anatoly', status: 'I am a boss', location: {city: 'Yakutsk', country: 'Russia'} },
+    { id: 1, photoUrl: 'https://www.lboro.ac.uk/media/media/subjects/geography-environment/images/staff-profiles/pgr-students/Guy%20Tallentire.jpg',
+        followed: true, fullName: 'Nikolai', status: 'Draining', location: {city: 'Yakutsk', country: 'Russia'} },
+    { id: 2, photoUrl: 'https://ath2.unileverservices.com/wp-content/uploads/sites/4/2020/02/IG-annvmariv-1024x1016.jpg',
+        followed: false, fullName: 'Julia', status: 'Working', location: {city: 'Moscow', country: 'Russia'} }
+]
