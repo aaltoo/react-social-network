@@ -1,16 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import s from './Users.module.css'
 import axios from "axios";
 import noAvatar from './../../assets/images/no-avatar.jpg'
 
 const Users = (props) => {
 
-    if (!props.users.length) {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+    let getUsers = () => {
+        axios.get("https://60a0e51dd2855b00173b15c9.mockapi.io/users")
             .then(response => {
-                props.setUsers(response.data.items)
+                props.setUsers(response.data)
             })
     }
+
+    useEffect(getUsers)
 
     return (
         <div>
@@ -32,8 +34,8 @@ const Users = (props) => {
                             <div>{user.status}</div>
                         </span>
                         <span>
-                            <div>{"user.location.country"}</div>
-                            <div>{"user.location.city"}</div>
+                            <div>{user.location.country}</div>
+                            <div>{user.location.city}</div>
                         </span>
                     </span>
                 </div>)

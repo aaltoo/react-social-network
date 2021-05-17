@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createRef} from "react";
 import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
@@ -11,7 +11,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
 const App = (props) => {
-  return (
+    return (
       <div className='app-wrapper'>
           <Header/>
           <Navbar/>
@@ -28,7 +28,7 @@ const App = (props) => {
               <Route path="/settings" component={Settings} />
           </div>
       </div>
-  );
+    );
 }
 
 export default App;
