@@ -4,4 +4,8 @@
   object-fit: cover;
 }
 
-/*# sourceMappingURL=Users.module.css.map */
+.selectedPage {
+  color: gold;
+}
+
+/*# sourceMappingURL=UsersAPIComponent.module.css.map */

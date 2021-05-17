@@ -1,31 +1,38 @@
-import React, {useEffect} from "react";
-import s from './Users.module.css'
-import axios from "axios";
-import noAvatar from './../../assets/images/no-avatar.jpg'
+import React from "react";
+import s from "./Users.module.css";
+import noAvatar from "../../assets/images/no-avatar.jpg";
 
-const Users = (props) => {
+let Users = (props) => {
 
-    let getUsers = () => {
-        axios.get("https://60a0e51dd2855b00173b15c9.mockapi.io/users")
-            .then(response => {
-                props.setUsers(response.data)
-            })
+    let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pages = []
+    for (let i = 1; i <= 20; i++) {
+        pages.push(i)
     }
-
-    useEffect(getUsers)
 
     return (
         <div>
+            <div>
+                {pages.map(p => {
+                    return <span key={p} className={props.currentPage === p && s.selectedPage} onClick={() => {
+                        props.onPageChanged(p)
+                    }}>{p}</span>
+                })}
+            </div>
             {
                 props.users.map(user => <div key={user.id}>
                     <span>
                         <div>
-                            <img src={user.photos.small != null ? user.photos.small : noAvatar} className={s.avatar} />
+                            <img src={user.photos.small != null ? user.photos.small : noAvatar} className={s.avatar}/>
                         </div>
                         <div>
-                            { user.followed
-                                ? <button onClick={ () => { props.unfollow(user.id) } }>Unfollow</button>
-                                : <button onClick={ () => { props.follow(user.id) } }>Follow</button> }
+                            {user.followed
+                                ? <button onClick={() => {
+                                    props.unfollow(user.id)
+                                }}>Unfollow</button>
+                                : <button onClick={() => {
+                                    props.follow(user.id)
+                                }}>Follow</button>}
                         </div>
                     </span>
                     <span>
@@ -34,8 +41,8 @@ const Users = (props) => {
                             <div>{user.status}</div>
                         </span>
                         <span>
-                            <div>{user.location.country}</div>
-                            <div>{user.location.city}</div>
+                            <div>{"user.location.country"}</div>
+                            <div>{"user.location.city"}</div>
                         </span>
                     </span>
                 </div>)
@@ -45,3 +52,4 @@ const Users = (props) => {
 }
 
 export default Users
+
