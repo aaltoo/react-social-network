@@ -1,15 +1,18 @@
 import React from "react";
-import s from './ProfileInfo.module.css'
+import styles from './ProfileInfo.module.scss'
+import Preloader from "../../Loader/Preloader";
+import noAvatar from './../../../assets/images/no-avatar.jpg'
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if (!props.profile) {
+        return <Preloader />
+    }
     return (
         <div>
-            <div>
-                <img className={s.avatar} src="https://sun9-15.userapi.com/impf/g57Go3Nn-gaLCjz4lcoDDeHPBHZVdXVghvhejA/UDR7YVMmC30.jpg?size=1600x1600&quality=96&sign=ce76a93247c21222b3d2644602a3564d&type=album" alt=""/>
+            <div className={styles.descriptionBlock}>
+                <img src={ props.profile.photos.large || noAvatar} className={styles.avatar}/>
+                <p>{props.profile.fullName}</p>
             </div>
-            <div className={s.descriptionBlock}>
-            </div>
-
         </div>
     )
 }

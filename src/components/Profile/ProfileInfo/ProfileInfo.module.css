@@ -1,8 +1,8 @@
-.avatar {
-    width: 200px;
-    margin: 1em;
+.descriptionBlock {
+  padding: 1em;
+}
+.descriptionBlock .avatar {
+  width: 200px;
 }
 
-.descriptionBlock {
-    padding: 1em;
-}
+/*# sourceMappingURL=ProfileInfo.module.css.map */

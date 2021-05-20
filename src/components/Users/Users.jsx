@@ -12,8 +12,8 @@ let Users = (props) => {
     }
 
     return (
-        <div>
-            <div>
+        <div className={s.usersPage}>
+            <div className={s.pagePagination}>
                 {pages.map(p => {
                     return <span key={p} className={props.currentPage === p && s.selectedPage} onClick={() => {
                         props.onPageChanged(p)
@@ -22,12 +22,10 @@ let Users = (props) => {
             </div>
             {
                 props.users.map(user => <div key={user.id}>
-                    <span>
-                        <div>
-                            <NavLink to={'/profile/' + user.id}>
-                                <img src={user.photos.small != null ? user.photos.small : noAvatar} className={s.avatar}/>
-                            </NavLink>
-                        </div>
+                    <div>
+                        <NavLink to={'/profile/' + user.id}>
+                            <img src={user.photos.small != null ? user.photos.small : noAvatar} className={s.avatar}/>
+                        </NavLink>
                         <div>
                             {user.followed
                                 ? <button onClick={() => {
@@ -37,17 +35,17 @@ let Users = (props) => {
                                     props.follow(user.id)
                                 }}>Follow</button>}
                         </div>
-                    </span>
-                    <span>
-                        <span>
+                    </div>
+                    <div>
+                        <div>
                             <div>{user.name}</div>
                             <div>{user.status}</div>
-                        </span>
-                        <span>
+                        </div>
+                        <div>
                             <div>{"user.location.country"}</div>
                             <div>{"user.location.city"}</div>
-                        </span>
-                    </span>
+                        </div>
+                    </div>
                 </div>)
             }
         </div>

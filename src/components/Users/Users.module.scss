@@ -4,6 +4,14 @@
   object-fit: cover;
 }
 
-.selectedPage {
-  color: gold;
+.usersPage {
+  margin: 1em;
+  .pagePagination {
+    span {
+      padding: 5px;
+    }
+    .selectedPage {
+      color: gold;
+    }
+  }
 }
