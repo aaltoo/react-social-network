@@ -1,8 +1,12 @@
 .header {
-    grid-area: h;
-    background-color: #333336;
+  grid-area: h;
+  background-color: #333336;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header img {
+  width: 50px;
 }
 
-.header img {
-    width: 50px;
-}
+/*# sourceMappingURL=Header.module.css.map */
