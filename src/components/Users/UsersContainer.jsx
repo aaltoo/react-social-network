@@ -18,7 +18,7 @@ const UsersContainer = (props) => {
 
     let getUsers = (page = props.currentPage) => {
         props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${props.pageSize}`, {withCredentials: true})
             .then(response => {
                 props.toggleIsFetching(false)
                 props.setUsers(response.data.items)
