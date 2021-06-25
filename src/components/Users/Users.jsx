@@ -2,7 +2,6 @@ import React from "react";
 import s from "./Users.module.css";
 import noAvatar from "../../assets/images/no-avatar.jpg";
 import {NavLink} from "react-router-dom";
-import {follow, unfollow} from "../../redux/users-reducer";
 
 let Users = (props) => {
 
