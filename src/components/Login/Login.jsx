@@ -3,7 +3,7 @@ import {Redirect} from "react-router-dom";
 const Login = (props) => {
     return (
         <div>
-            Yo
+            <h1>LOGIN</h1>
         </div>
     )
 }
