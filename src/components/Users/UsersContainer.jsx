@@ -21,13 +21,7 @@ const UsersContainer = (props) => {
     return <>
         {props.isFetching ? <Preloader/> : <Users
             onPageChanged={onPageChanged}
-            unfollow={props.unfollow}
-            follow={props.follow}
-            users={props.users}
-            pageSize={props.pageSize}
-            currentPage={props.currentPage}
-            totalUsersCount={props.totalUsersCount}
-            followingInProgress={props.followingInProgress}
+            {...props}
         />}
     </>
 }

@@ -4,13 +4,14 @@ import {connect} from "react-redux";
 
 const DialogsContainer = (props) => {
     return (
-        <Dialogs />
+        <Dialogs {...props}/>
     )
 }
 
 let mapStateToProps = (state) => {
     return {
         dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth
     }
 }
 
@@ -19,4 +20,4 @@ let mapDispatchToProps = {
     sendMessage
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (Dialogs)
+export default connect(mapStateToProps, mapDispatchToProps) (DialogsContainer)

@@ -16,12 +16,13 @@ const ProfileContainer = (props) => {
 
     useEffect(setUserProfile, [props.match.params.userId])
     return (
-        <Profile {...props} profile={props.profile} />
+        <Profile {...props}/>
     )
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth
 })
 
 let withUrlDataContainerComponent = withRouter(ProfileContainer)
