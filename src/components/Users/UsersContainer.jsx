@@ -9,6 +9,8 @@ import {
     unfollow
 } from "../../redux/users-reducer";
 import Preloader from "../Loader/Preloader";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 const UsersContainer = (props) => {
 
@@ -44,4 +46,7 @@ let mapDispatchToProps =  {
     getUsers
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (UsersContainer)
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, mapDispatchToProps)
+) (UsersContainer)
