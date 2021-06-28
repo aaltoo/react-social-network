@@ -4,11 +4,15 @@ import Preloader from "../../Loader/Preloader";
 import noAvatar from './../../../assets/images/no-avatar.jpg'
 
 const ProfileInfo = (props) => {
-    const [status, setStatus] = useState('update status')
     const [editMode, setEditMode] = useState(false)
 
-    let updateStatus = (e) => {
-        setStatus(e.target.value)
+    let onStatusChange = (e) => {
+        props.setStatus(e.target.value)
+    }
+
+    let onEditFinish = () => {
+        setEditMode(false)
+        props.updateStatus(props.status)
     }
 
     if (!props.profile) {
@@ -19,18 +23,19 @@ const ProfileInfo = (props) => {
         <div>
             <div className={styles.descriptionBlock}>
                 <img src={ props.profile.photos.large || noAvatar} className={styles.avatar}/>
+                <input type="file"/>
                 <p>{props.profile.fullName}</p>
                 <div className={styles.status}>
                     <p
                         className={editMode ? styles.hidden : styles.status}
                         onDoubleClick={() => setEditMode(true)}
-                    >{status}</p>
+                    >{props.status}</p>
                     <input
                         className={editMode ? styles.status : styles.hidden}
-                        value={status}
+                        value={props.status}
                         autoFocus={true}
-                        onChange={updateStatus}
-                        onBlur={() => setEditMode(false)}
+                        onChange={onStatusChange}
+                        onBlur={onEditFinish}
                         type="text"
                     />
                 </div>
