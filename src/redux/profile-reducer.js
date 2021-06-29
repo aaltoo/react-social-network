@@ -11,39 +11,39 @@ let initialState = {
         {id: 1, message: 'whassup?', likeCount: 11},
         {id: 2, message: 'I am so cooool', likeCount: 0}
     ],
-    newPostText: '',
     profile: null,
     status: ''
 }
 
 const profileReducer = (state = initialState, action) => {
-    let stateCopy = Object.assign({}, state)
-
     switch (action.type) {
         case ADD_POST:
             let newPost = {
                 id: 3,
-                message: stateCopy.newPostText,
+                message: action.message,
                 likeCount: 0
             }
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
-            return stateCopy
-        case UPDATE_NEW_POST_TEXT:
-            stateCopy.newPostText = action.newText
-            return stateCopy
+            return {
+                ...state,
+                posts: [...state.posts, newPost]
+            }
         case SET_USER_PROFILE:
-            return { ...state, profile: action.profile }
+            return {
+                ...state,
+                profile: action.profile
+            }
         case SET_STATUS:
-            return { ...state, status: action.status }
+            return {
+                ...state,
+                status: action.status
+            }
         default:
-            return stateCopy
+            return state
     }
 }
 
-export let addPost = () => ({type: ADD_POST})
-export let updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
-export let setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export let addPost = (newPostText) => ({ type: ADD_POST, message: newPostText })
+export let setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export let setStatus = (status) => ({type: SET_STATUS, status})
 
 export const getProfile = (userId) => {

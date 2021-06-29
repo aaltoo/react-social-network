@@ -23,13 +23,12 @@ const ProfileInfo = (props) => {
         <div>
             <div className={styles.descriptionBlock}>
                 <img src={ props.profile.photos.large || noAvatar} className={styles.avatar}/>
-                <input type="file"/>
                 <p>{props.profile.fullName}</p>
                 <div className={styles.status}>
                     <p
                         className={editMode ? styles.hidden : styles.status}
                         onDoubleClick={() => setEditMode(true)}
-                    >{props.status}</p>
+                    >{props.status || ">edit status"}</p>
                     <input
                         className={editMode ? styles.status : styles.hidden}
                         value={props.status}

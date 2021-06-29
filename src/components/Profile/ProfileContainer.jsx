@@ -22,7 +22,7 @@ const ProfileContainer = (props) => {
     }
 
     useEffect(getProfile, [userId])
-    useEffect(getStatus, [userId])
+    useEffect(getStatus, [])
 
     return (
         <Profile {...props}/>
