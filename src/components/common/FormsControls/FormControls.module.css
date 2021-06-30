@@ -1,0 +1,9 @@
+textarea, input {
+  outline: none;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+/*# sourceMappingURL=FormControls.module.css.map */

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styles from './ProfileInfo.module.scss'
-import Preloader from "../../Loader/Preloader";
+import Preloader from "../../common/Loader/Preloader";
 import noAvatar from './../../../assets/images/no-avatar.jpg'
 
 const ProfileInfo = (props) => {
@@ -22,7 +22,7 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div className={styles.descriptionBlock}>
-                <img src={ props.profile.photos.large || noAvatar} className={styles.avatar}/>
+                <img src={ props.profile.photos.large || noAvatar} className={styles.avatar} alt="avatar"/>
                 <p>{props.profile.fullName}</p>
                 <div className={styles.status}>
                     <p

@@ -8,7 +8,7 @@ import {
     setCurrentPage,
     unfollow
 } from "../../redux/users-reducer";
-import Preloader from "../Loader/Preloader";
+import Preloader from "../common/Loader/Preloader";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
