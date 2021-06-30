@@ -10,7 +10,7 @@ const ProfileContainer = (props) => {
 
     let userId = props.match.params.userId
     if (!userId) {
-        userId = 17209
+        userId = props.authorizedUserId
     }
 
     let getProfile = () => {
@@ -32,7 +32,9 @@ const ProfileContainer = (props) => {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.userId,
+        isAuth: state.auth.isAuth
     }
 }
 
