@@ -22,8 +22,7 @@ const App = (props) => {
     if (!props.initialized) return <Preloader />
 
     return (
-        <BrowserRouter>
-            <Provider store={store}>
+
                 <div className='app-wrapper'>
                   <HeaderContainer/>
                   <Navbar/>
@@ -41,8 +40,6 @@ const App = (props) => {
                       <Route path="/settings" component={Settings} />
                   </div>
                 </div>
-            </Provider>
-        </BrowserRouter>
     );
 }
 
