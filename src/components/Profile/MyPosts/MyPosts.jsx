@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import AddPostForm from "./AddPostForm";
 
 const MyPosts = (props) => {
-
+    console.log('RENDER')
     let postElements = props.posts.map(post => <Post
         message={post.message}
         likeCount={' ' + post.likeCount + ' likes'}

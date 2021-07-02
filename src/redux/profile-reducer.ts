@@ -4,7 +4,7 @@ import { PostType, ProfileType } from "../types/types";
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
-
+const DELETE_POST = 'DELETE-POST'
 
 
 let initialState = {
@@ -41,6 +41,11 @@ const profileReducer = (state = initialState, action : any) : InitialStateType =
                 ...state,
                 status: action.status
             }
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.id !== action.id)
+            }
         default:
             return state
     }
@@ -61,9 +66,15 @@ type SetStatusActionType = {
     status: string
 }
 
+type DeletePostActionType = {
+    type: typeof DELETE_POST
+    id: number
+}
+
 export let addPost = (message: string) : AddPostActionType => ({ type: ADD_POST, message })
 export let setUserProfile = (profile : ProfileType) : SetUserProfileActionType => ({ type: SET_USER_PROFILE, profile })
 export let setStatus = (status : string) : SetStatusActionType => ({ type: SET_STATUS, status })
+export let deletePost = (id : number) : DeletePostActionType => ({ type: DELETE_POST, id })
 
 export const getProfile = (userId : number) => {
     return (dispatch : any) => {
