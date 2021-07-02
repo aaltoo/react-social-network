@@ -1892,6 +1892,14 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/redux-form@^8.3.1":
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/@types/redux-form/-/redux-form-8.3.1.tgz#a5e67396fb86cf58d511bed7e4c0c9c65d01042a"
+  integrity sha512-8lmJFxHtUBMWoI7lLX8Q+lhz9/nmkerEtrxgHZzhRwhQzD73MWkP9EA9w6Gx7cc02Fz3FkpYlfTN+9ELGUXZQQ==
+  dependencies:
+    "@types/react" "*"
+    redux "^3.6.0 || ^4.0.0"
+
 "@types/resolve@0.0.8":
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-0.0.8.tgz#f26074d238e02659e323ce1a13d041eee280e194"
@@ -9754,7 +9762,7 @@ redux-thunk@^2.3.0:
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
-redux@^4.0.0, redux@^4.1.0:
+"redux@^3.6.0 || ^4.0.0", redux@^4.0.0, redux@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.1.0.tgz#eb049679f2f523c379f1aff345c8612f294c88d4"
   integrity sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==
