@@ -1,5 +1,5 @@
 import {usersAPI} from "../api/api";
-import {PhotosType, UserType} from "../types/types";
+import {UserType} from "../types/types";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
