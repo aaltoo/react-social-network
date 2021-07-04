@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'https://cors-anywhere.herokuapp.com/https://social-network.samuraijs.com/api/1.0/',
+    baseURL: 'https://protected-tundra-51029.herokuapp.com/https://social-network.samuraijs.com/api/1.0/',
     headers: {
         "API-KEY": "8c8ad36b-95f7-4465-8bff-929d86088fd4"
     }
